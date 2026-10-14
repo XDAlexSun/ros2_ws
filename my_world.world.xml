@@ -1,0 +1,49 @@
+<mvsim_world version="1.0">
+  <simul_timestep>5e-3</simul_timestep>
+
+  <gui>
+      <cam_distance>15</cam_distance>
+  </gui>
+
+  <element class="ground_grid">
+  </element>
+
+  <!-- Include the Jackal vehicle definition -->
+  <include file="$(ros2 pkg prefix mvsim)/share/mvsim/definitions/jackal.vehicle.xml"
+    default_sensors="true"
+    />
+
+  <vehicle name="r1" class="jackal">
+    <init_pose>0 0 170</init_pose>  <!-- In global coords: x,y, yaw(deg) -->
+    <init_vel>0 0 0</init_vel>  <!-- In local coords: vx,vy, omega(deg/s) -->
+
+    <!-- You can also attach sensors to vehicles in separate includes,
+        or define them inline within the vehicle block. -->
+    <!-- <include file="$(ros2 pkg prefix mvsim)/share/mvsim/definitions/lidar2d.sensor.xml" sensor_x="1.7" sensor_z="1.01" sensor_yaw="0" max_range="70.0" sensor_name="laser1" />  -->
+  </vehicle>
+
+  <variable name="WALL_THICKNESS" value="0.2"></variable>
+
+  <!-- Wall with a single door -->
+  <element class="vertical_plane">
+    <x0>-10</x0> <y0>-10</y0>
+    <x1>-10</x1> <y1>10</y1>
+    <z>0.0</z> <height>3.0</height>
+    <cull_face>NONE</cull_face>
+    <texture>https://mrpt.github.io/mvsim-models/textures-cgbookcase/wall-bricks-01.png</texture>
+    <texture_size_x>2.5</texture_size_x>
+    <texture_size_y>2.5</texture_size_y>
+    <thickness>${WALL_THICKNESS}</thickness>  <!-- Wall thickness in meters -->
+
+    <!-- Door at 50% position (middle of wall), 1.2m wide, standard height -->
+    <door>
+      <position>0.5</position>  <!-- 0.0 = start point, 1.0 = end point -->
+      <width>1.2</width>        <!-- meters -->
+      <z_min>0.0</z_min>        <!-- bottom of door -->
+      <z_max>2.1</z_max>        <!-- top of door -->
+      <name>main_entrance</name>
+    </door>
+  </element>
+
+
+</mvsim_world>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>visualization_marker_tutorials</name>
+  <version>0.10.3</version>
+  <description>The visulalization_marker_tutorials package</description>
+
+  <maintainer email="mabel@openrobotics.org">Mabel Zhang</maintainer>
+
+  <license>BSD</license>
+  <url type="website">http://ros.org/wiki/visualization_marker_tutorials</url>
+
+  <author>Josh Faust</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>visualization_msgs</depend>
+  <depend>pluginlib</depend>
+  <depend>rviz_common</depend>
+  <depend>rviz_plugin_tutorial_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <library path="point_display">
+    <class type="rviz_plugin_tutorial::PointDisplay" base_class_type="rviz_common::Display">
+      <description></description>
+    </class>
+  </library>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
