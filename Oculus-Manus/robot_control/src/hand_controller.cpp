@@ -11,7 +11,7 @@ public:
     }
 
 private:
-    void callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg) {
+    void callback(const std_msgs::msg::Float64MultiArray::ConstSharedPtr msg)     {   
         RCLCPP_INFO(this->get_logger(), "Received joint command size: %zu", msg->data.size());
     }
 
